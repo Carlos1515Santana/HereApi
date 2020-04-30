@@ -17,7 +17,7 @@ public class Usuario {
 	int id;
 
 	@Column
-	String nome;
+	String usuario;
 	
 	@Column
 	String email;
