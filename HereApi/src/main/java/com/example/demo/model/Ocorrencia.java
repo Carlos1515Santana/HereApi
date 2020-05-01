@@ -21,14 +21,8 @@ public class Ocorrencia {
 	public Ocorrencia( ) {
 		
 	}
-	
-	public Ocorrencia( int            id, 
-			           Tipo_ocorrecia tipo_ocorrencia, 
-			           Endereco       endereco, 
-			           double         longitude, 
-			           double         latitude,
-			           String         descricao, 
-			           Calendar       data ) {
+
+	public Ocorrencia(int id, Tipo_ocorrecia tipo_ocorrencia, Endereco endereco, double longitude, double latitude, String descricao, Calendar data) {
 		this.id              = id;
 		this.tipo_ocorrencia = tipo_ocorrencia;
 		this.endereco        = endereco;

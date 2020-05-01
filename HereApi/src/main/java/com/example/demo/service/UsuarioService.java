@@ -19,5 +19,4 @@ public class UsuarioService {
 	public Usuario findByUsuario( Usuario usuario ) {
 		return usuarioRepository.findByUsuario( usuario.getUsuario( ) );
 	}
-
 }
