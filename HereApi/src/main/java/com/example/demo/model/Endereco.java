@@ -1,4 +1,4 @@
-package model;
+package com.example.demo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,18 +10,15 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Usuario {
+public class Endereco {
 	
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
-	int id;
-
-	@Column
-	String usuario;
+	int id_enreco;
 	
 	@Column
-	String email;
+	String nome_rua;
 	
 	@Column
-	int idade;
+	int cep;
 }

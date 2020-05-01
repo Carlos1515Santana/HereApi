@@ -1,4 +1,4 @@
-package enums;
+package com.example.demo.enums;
 
 public enum Tipo_ocorrecia {
 	Frt( "Furto"   ),
