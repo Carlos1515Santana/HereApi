@@ -9,5 +9,4 @@ import com.example.demo.model.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, String>{
 
 	Usuario findByUsuario( String usuario );
-	
 }
