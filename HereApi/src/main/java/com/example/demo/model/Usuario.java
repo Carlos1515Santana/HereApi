@@ -13,11 +13,12 @@ public class Usuario {
 		
 	}
 	
-	public Usuario( int id, String usuario, String email, int idade ) {
+	public Usuario( int id, String usuario, String email, int idade, String senha ) {
 		this.id      = id;
-		this.usuario = usuario;
+		this.nome    = usuario;
 		this.email   = email;
 		this.idade   = idade;
+		this.senha   = senha;
 	}
 
 	@Id
@@ -25,10 +26,13 @@ public class Usuario {
 	private int id;
 
 	@Column
-	private String usuario;
+	private String nome;
 	
 	@Column
 	private String email;
+	
+	@Column
+	private String senha;
 	
 	@Column
 	private int idade;
@@ -42,11 +46,11 @@ public class Usuario {
 	}
 
 	public String getUsuario() {
-		return usuario;
+		return nome;
 	}
 
 	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+		this.nome = usuario;
 	}
 
 	public String getEmail() {
@@ -64,6 +68,12 @@ public class Usuario {
 	public void setIdade(int idade) {
 		this.idade = idade;
 	}
-	
-	
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 }
