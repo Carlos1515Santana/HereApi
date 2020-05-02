@@ -2,18 +2,16 @@ package com.example.demo.model;
 
 import java.util.Calendar;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.example.demo.enums.Tipo_ocorrecia;
 
 @Entity
 public class Ocorrencia {
@@ -22,7 +20,7 @@ public class Ocorrencia {
 		
 	}
 
-	public Ocorrencia(int id, Tipo_ocorrecia tipo_ocorrencia, Endereco endereco, double longitude, double latitude, String descricao, Calendar data) {
+	public Ocorrencia(int id, String tipo_ocorrencia, Endereco endereco, double longitude, double latitude, String descricao, Calendar data) {
 		this.id              = id;
 		this.tipo_ocorrencia = tipo_ocorrencia;
 		this.endereco        = endereco;
@@ -33,14 +31,13 @@ public class Ocorrencia {
 	}
 
 	@Id
-	@GeneratedValue(generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int id;
+    
+	@Column
+	private String tipo_ocorrencia;
 	
-	@Enumerated(EnumType.STRING)
-	private Tipo_ocorrecia tipo_ocorrencia;
-	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@Autowired
 	private Endereco endereco;
 	
@@ -64,11 +61,11 @@ public class Ocorrencia {
 		this.id = id;
 	}
 
-	public Tipo_ocorrecia getTipo_ocorrencia() {
+	public String getTipo_ocorrencia() {
 		return tipo_ocorrencia;
 	}
 
-	public void setTipo_ocorrencia(Tipo_ocorrecia tipo_ocorrencia) {
+	public void setTipo_ocorrencia(String tipo_ocorrencia) {
 		this.tipo_ocorrencia = tipo_ocorrencia;
 	}
 

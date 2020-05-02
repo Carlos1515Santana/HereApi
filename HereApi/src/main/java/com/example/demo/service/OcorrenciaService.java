@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.enums.Tipo_ocorrecia;
 import com.example.demo.model.Ocorrencia;
 import com.example.demo.repository.OcorrenciaRepository;
 
@@ -15,7 +16,7 @@ public class OcorrenciaService {
 	@Autowired
 	OcorrenciaRepository ocorrenciaRepository;
 
-	public Ocorrencia save(Ocorrencia ocorrencia) {
+	public Ocorrencia cadastrar(Ocorrencia ocorrencia) {
 		return ocorrenciaRepository.save(ocorrencia);
 	}
 	
@@ -23,7 +24,7 @@ public class OcorrenciaService {
 		return ocorrenciaRepository.findAll();
 	}
 	
-	public Optional<Ocorrencia> findById(Ocorrencia ocorrencia) {
-		return ocorrenciaRepository.findById(ocorrencia.getId());
+	public Ocorrencia findByTipo(String tipo) {
+		return ocorrenciaRepository.findByTipo(tipo);
 	}
 }
