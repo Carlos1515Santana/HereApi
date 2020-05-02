@@ -12,5 +12,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, String>{
 
 	@Query(value =  "select * from Usuario u where u.nome = :nome and u.senha = :senha", nativeQuery = true)
 	public Usuario findByTest( @Param("nome" ) String usuario,
-							   @Param("senha") String senha ); 
+							   @Param("senha") String senha );
  }

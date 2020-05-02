@@ -1,25 +1,19 @@
 package com.example.demo.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Usuario {
-	
-	public Usuario( ){
-		
-	}
-	
-	public Usuario( int id, String usuario, String email, int idade, String senha ) {
-		this.id      = id;
-		this.nome    = usuario;
-		this.email   = email;
-		this.idade   = idade;
-		this.senha   = senha;
-	}
 
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -36,6 +30,10 @@ public class Usuario {
 	
 	@Column
 	private int idade;
+	
+	@OneToMany(mappedBy="usuario", targetEntity=Ocorrencia.class, cascade=CascadeType.PERSIST)
+	@JsonIgnoreProperties
+	private List<Ocorrencia> ocorrencias;
 
 	public int getId() {
 		return id;

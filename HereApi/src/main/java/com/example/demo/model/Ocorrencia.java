@@ -8,27 +8,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Ocorrencia {
-	
-	public Ocorrencia( ) {
-		
-	}
-
-	public Ocorrencia(int id, String tipo_ocorrencia, Endereco endereco, double longitude, double latitude, String descricao, Calendar data) {
-		this.id              = id;
-		this.tipo_ocorrencia = tipo_ocorrencia;
-		this.endereco        = endereco;
-		this.longitude       = longitude;
-		this.latitude        = latitude;
-		this.descricao       = descricao;
-		this.data            = data;
-	}
 
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -52,6 +41,10 @@ public class Ocorrencia {
 	
 	@Column
 	private Calendar data;
+	
+	@ManyToOne 
+	@JsonIgnoreProperties
+	private Usuario usuario;
 
 	public int getId() {
 		return id;
@@ -108,4 +101,13 @@ public class Ocorrencia {
 	public void setData(Calendar data) {
 		this.data = data;
 	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
 }

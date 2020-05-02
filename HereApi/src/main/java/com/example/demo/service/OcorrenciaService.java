@@ -1,15 +1,13 @@
 package com.example.demo.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.enums.Tipo_ocorrecia;
 import com.example.demo.model.Ocorrencia;
 import com.example.demo.repository.OcorrenciaRepository;
-
+ 
 @Service
 public class OcorrenciaService {
 	
@@ -20,11 +18,11 @@ public class OcorrenciaService {
 		return ocorrenciaRepository.save(ocorrencia);
 	}
 	
-	public List<Ocorrencia> findAll() {
-		return ocorrenciaRepository.findAll();
+	public List<Ocorrencia> findAll(int id) {
+		return ocorrenciaRepository.findAllTodos(id);
 	}
 	
-	public Ocorrencia findByTipo(String tipo) {
-		return ocorrenciaRepository.findByTipo(tipo);
+	public Ocorrencia findByTipo(String tipo, int id) {
+		return ocorrenciaRepository.findByTipo(tipo, id);
 	}
 }

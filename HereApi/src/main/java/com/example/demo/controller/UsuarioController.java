@@ -26,4 +26,9 @@ public class UsuarioController {
 	public boolean login (@PathVariable String usuario, @PathVariable String senha) {
   		return userService.findByUsuario(usuario,senha);
 	}
+	
+	@RequestMapping(value = "/usuario")	
+	public Usuario findUsuario() {
+  		return userService.findByUsuarioTest();
+	}
 }
