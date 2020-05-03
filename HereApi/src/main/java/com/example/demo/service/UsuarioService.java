@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.example.demo.model.Usuario;
 import com.example.demo.repository.UsuarioRepository;
@@ -20,15 +22,16 @@ public class UsuarioService{
 		return usuarioRepository.save( usuario );
 	}
 	
-	public boolean findByUsuario(String usuario, String senha) {
+	public Usuario findByUsuario(String usuario, String senha) {
 		this.usuario = usuario;
 		this.senha   = senha;
-		
-		if( usuarioRepository.findByTest(usuario, senha) != null )
-			return true;
+		Usuario user = usuarioRepository.findByTest(usuario, senha);
+		 
+		if( user != null )
+			return user;
 		else
-			return false;
-	}
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+ 	}
 	
 	public Usuario findByUsuarioTest( ) {
 		return usuarioRepository.findByTest(usuario, senha);

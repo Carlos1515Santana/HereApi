@@ -24,7 +24,7 @@ public class OcorrenciaController {
 	@Autowired
 	UsuarioService usuarioService;
 	
-	Usuario user;
+ 	Usuario user;
 	
 	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST, produces = {"application/json"})	
 	public Ocorrencia novaOcorrencia(@RequestBody Ocorrencia ocorrencia) {

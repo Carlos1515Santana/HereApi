@@ -23,7 +23,7 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value = "/login/{usuario}/{senha}")	
-	public boolean login (@PathVariable String usuario, @PathVariable String senha) {
+	public Usuario login (@PathVariable String usuario, @PathVariable String senha) {
   		return userService.findByUsuario(usuario,senha);
 	}
 	
