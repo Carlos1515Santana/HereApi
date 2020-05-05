@@ -47,6 +47,7 @@ public class Ocorrencia {
 
 	public int getId() {
 		return id;
+		
 	}
 
 	public void setId(int id) {
