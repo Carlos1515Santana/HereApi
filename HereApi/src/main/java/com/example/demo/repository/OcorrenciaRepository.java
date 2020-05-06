@@ -17,4 +17,7 @@ public interface OcorrenciaRepository extends JpaRepository<Ocorrencia, Integer>
 	
 	@Query(value =  "select * from Ocorrencia o where o.usuario_id = :id", nativeQuery = true)
 	public List<Ocorrencia> findAllTodos(@Param("id") int id); 
+	
+	@Query(value =  "SELECT id FROM ocorrencia ORDER BY id DESC LIMIT 1", nativeQuery = true)
+	public int findLast(); 
 }

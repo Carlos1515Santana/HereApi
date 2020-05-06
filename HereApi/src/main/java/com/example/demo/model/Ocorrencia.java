@@ -41,13 +41,15 @@ public class Ocorrencia {
 	@Column
 	private Calendar data;
 	
+	@Column
+	private String pathFoto;
+	
 	@ManyToOne 
 	@JsonIgnoreProperties
 	private Usuario usuario;
 
 	public int getId() {
 		return id;
-		
 	}
 
 	public void setId(int id) {
@@ -109,5 +111,12 @@ public class Ocorrencia {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
+	public String getFoto() {
+		return pathFoto;
+	}
+
+	public void setFoto(String foto) {
+		this.pathFoto = foto;
+	}
 }

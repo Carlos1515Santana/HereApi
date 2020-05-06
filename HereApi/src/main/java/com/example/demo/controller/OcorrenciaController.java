@@ -27,25 +27,28 @@ public class OcorrenciaController {
  	Usuario user;
 	
 	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST, produces = {"application/json"})	
-	public Ocorrencia novaOcorrencia(@RequestBody Ocorrencia ocorrencia) {
+	public Ocorrencia novaOcorrencia(@RequestBody Ocorrencia ocorrencia) throws Exception {
 		ocorrencia.setUsuario(usuarioService.findByUsuarioTest());
+		ocorrencia.setFoto(ocorrenciaService.decode(ocorrencia.getFoto()));
 		if(ocorrencia.getUsuario() != null)
 			return ocorrenciaService.cadastrar(ocorrencia);
 		else
-			return null;
+			throw new Exception("Usuário não logado");
 	}
 	
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)	
-	public List<Ocorrencia> buscarTodos( ) {
+	public List<Ocorrencia> buscarTodos( ) throws Exception {
 		user = usuarioService.findByUsuarioTest();
 		if(user != null)
 			return ocorrenciaService.findAll(user.getId());
 		else
-			return null;
+			throw new Exception("Usuário não logado");
 	}
 	
 	@RequestMapping(value = "/buscar/{tipo}")	
 	public Ocorrencia buscarOcorrenciaTipo (@PathVariable String tipo) {
    		return ocorrenciaService.findByTipo(tipo, user.getId());
 	}
+	
+	
 }
