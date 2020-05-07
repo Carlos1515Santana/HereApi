@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,19 +21,24 @@ public class OcorrenciaService implements IOcorrenciaService{
 	
 	@Autowired
 	OcorrenciaRepository ocorrenciaRepository;
-
-	int contador = 0;
 	
 	public Ocorrencia cadastrar(Ocorrencia ocorrencia) {
+		ocorrencia.setPathFoto(decode(ocorrencia.getPathFoto()));
 		return ocorrenciaRepository.save(ocorrencia);
 	}
 	
 	public List<Ocorrencia> findAll(int id) {
-		return ocorrenciaRepository.findAllTodos(id);
+		List<Ocorrencia> ocorrencias = ocorrenciaRepository.findAllTodos(id);
+		for(Ocorrencia c: ocorrencias) {
+			c.setImage(encoder(c.getPathFoto()));
+		}
+		return ocorrencias;
 	}
 	
 	public Ocorrencia findByTipo(String tipo, int id) {
-		return ocorrenciaRepository.findByTipo(tipo, id);
+		Ocorrencia ocorrencia = ocorrenciaRepository.findByTipo(tipo, id);
+		ocorrencia.setImage(encoder(ocorrencia.getPathFoto()));
+		return ocorrencia;
 	}
 	
 	@Override
@@ -40,17 +47,12 @@ public class OcorrenciaService implements IOcorrenciaService{
 		Path currentPath = Paths.get("");
 		Path absolutePath = currentPath.toAbsolutePath();
 		String pathBase = absolutePath + "/src/main/resources/static/fotos/Imagem";
-		
-		if(contador != 0)
-			path = geraPath(pathBase);
-		else
-			path = pathBase + "-01.png";
-
+ 		path = geraPath(pathBase);
+ 		
 		path = path.replace("\\", "/");
 
 		try (FileOutputStream imageOutFile = new FileOutputStream(path)) {	
-		// Converting a Base64 String into Image byte array
-			byte[] imageByteArray = Base64.getDecoder().decode(base64Image);
+ 			byte[] imageByteArray = Base64.getDecoder().decode(base64Image);
 		    imageOutFile.write(imageByteArray);
 		} 
 		catch (FileNotFoundException e) {
@@ -62,13 +64,33 @@ public class OcorrenciaService implements IOcorrenciaService{
 		return path;
 	}
 
-	//Padrão 'Imagem-01.jpg'
+	//Padrão 'Imagem-1.jpg'
 	@Override
 	public String geraPath(String path) {
-		contador++;
-		int id = ocorrenciaRepository.findLast();
- 		String idString = String.valueOf(id+1);
-		path = path + "-" + idString + ".png";
+		String idString;
+ 		Integer id = ocorrenciaRepository.findLast();
+ 		if(id != null)
+ 			idString = String.valueOf(id+1);
+ 		else
+ 			idString = String.valueOf(01);
+ 		
+		path = path + "-" + idString + ".png";	
 		return path;
-	}	
+	}
+
+	@Override
+	public String encoder(String imagePath) {
+	    String base64Image = "";
+	    File file = new File(imagePath);
+	    try (FileInputStream imageInFile = new FileInputStream(file)) {
+ 	      byte imageData[] = new byte[(int) file.length()];
+	      imageInFile.read(imageData);
+	      base64Image = Base64.getEncoder().encodeToString(imageData);
+	    } catch (FileNotFoundException e) {
+	      System.out.println("Image not found" + e);
+	    } catch (IOException ioe) {
+	      System.out.println("Exception while reading the Image " + ioe);
+	    }
+	    return base64Image;
+	  }
 }

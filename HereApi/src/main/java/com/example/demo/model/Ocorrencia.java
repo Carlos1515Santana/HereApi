@@ -47,6 +47,10 @@ public class Ocorrencia {
 	@ManyToOne 
 	@JsonIgnoreProperties
 	private Usuario usuario;
+	
+	@Column
+	@JsonIgnoreProperties
+	private String image;
 
 	public int getId() {
 		return id;
@@ -112,11 +116,19 @@ public class Ocorrencia {
 		this.usuario = usuario;
 	}
 
-	public String getFoto() {
+	public String getPathFoto() {
 		return pathFoto;
 	}
 
-	public void setFoto(String foto) {
-		this.pathFoto = foto;
+	public void setPathFoto(String pathFoto) {
+		this.pathFoto = pathFoto;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 }
