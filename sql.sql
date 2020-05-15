@@ -1,0 +1,1 @@
+select f.bairro,  count(1) qtd from furtos_roubos f where f.rubrica like ("Furto (art. 155)%") group by f.bairro order by qtd desc
