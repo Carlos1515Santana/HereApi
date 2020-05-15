@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 public class AllObjectOcorrencia implements Serializable  {
 	
@@ -19,7 +21,8 @@ public class AllObjectOcorrencia implements Serializable  {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue( strategy = GenerationType.IDENTITY )
+	@GeneratedValue(generator="increment")
+	@GenericGenerator(name="increment", strategy = "increment")
 	private long id_ocorrencia;
 	
 	@Column(name="RUBRICA")
