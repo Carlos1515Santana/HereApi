@@ -16,26 +16,33 @@ public class AllObjectOcorrenciaService {
 	AllObjectOcorrenciaRepository repository;
 	
 	public  List<OcorrenciaAgrupadoDTO> listaOcorrencia() {
-	 return	repository.buscarQtdFurtoPorBairro();
+	// return	repository.buscarQtdFurtoPorBairro();
+		return null;
 	}
 	
 	public List<AllObjectOcorrencia> listar(){
-		return repository.findAll();
+//		return repository.findAll();
+		return null;
 	}
 	public List<OcorrenciaAgrupadoDTO> listarOcorrenciaPorDia(){
-		return this.repository.findFurtoPorDia();
+//		return this.repository.findFurtoPorDia();
+		return null;
 	}
 	public List<OcorrenciaAgrupadoDTO> listarOcorrenciaPorMes(){
-		return this.repository.findFurtoPorMes();
+//		return this.repository.findFurtoPorMes();
+		return null;
 	}
 	public List<OcorrenciaAgrupadoDTO> listarOcorrenciaPorAno(){
-		return this.repository.findFurtoPorAno();
+//		return this.repository.findFurtoPorAno();
+		return null;
 	}
 	public List<OcorrenciaAgrupadoDTO> listarOcorrenciaPorMarcaVeiculo(){
-		return this.repository.findFurtoRouboCarro();
+//		return this.repository.findFurtoRouboCarro();
+		return null;
 	}
 	public List<OcorrenciaAgrupadoDTO> listarOcorrenciaPorMarcaCelular(){
-		return this.repository.findFurtoRouboCelular();
+//		return this.repository.findFurtoRouboCelular();
+		return null;
 	}
 
 }
