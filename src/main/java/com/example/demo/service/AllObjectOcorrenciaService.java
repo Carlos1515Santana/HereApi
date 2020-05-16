@@ -20,9 +20,9 @@ public class AllObjectOcorrenciaService {
 		return null;
 	}
 	
+	
 	public List<AllObjectOcorrencia> listar(){
-//		return repository.findAll();
-		return null;
+		return repository.findAll();
 	}
 	public List<OcorrenciaAgrupadoDTO> listarOcorrenciaPorDia(){
 //		return this.repository.findFurtoPorDia();

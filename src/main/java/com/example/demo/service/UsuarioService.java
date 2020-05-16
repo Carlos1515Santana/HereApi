@@ -23,17 +23,19 @@ public class UsuarioService{
 	}
 	
 	public Usuario findByUsuario(String usuario, String senha) {
-		this.usuario = usuario;
-		this.senha   = senha;
-		Usuario user = usuarioRepository.findByTest(usuario, senha);
-		 
-		if( user != null )
-			return user;
-		else
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//		this.usuario = usuario;
+//		this.senha   = senha;
+//		Usuario user = usuarioRepository.findByTest(usuario, senha);
+//		 
+//		if( user != null )
+//			return user;
+//		else
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		return null;
  	}
 	
 	public Usuario findByUsuarioTest( ) {
-		return usuarioRepository.findByTest(usuario, senha);
+//		return usuarioRepository.findByTest(usuario, senha);
+		return null;
 	}
 }

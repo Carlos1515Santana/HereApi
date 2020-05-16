@@ -20,4 +20,6 @@ public interface OcorrenciaRepository extends JpaRepository<Ocorrencia, Integer>
 //	
 //	@Query(value =  "SELECT id FROM ocorrencia ORDER BY id DESC LIMIT 1", nativeQuery = true)
 //	public Integer findLast(); 
+	
+	public List<Ocorrencia> findAll();
 }

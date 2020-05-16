@@ -40,11 +40,12 @@ public class OcorrenciaController {
 	
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)	
 	public List<Ocorrencia> buscarTodos( ) throws Exception {
-		user = usuarioService.findByUsuarioTest(); 
-		if(user != null) 
-			return ocorrenciaService.findAll(user.getId());
-		else
-			throw new Exception("Usuário não logado");
+		return ocorrenciaService.buscarTudo();
+//		user = usuarioService.findByUsuarioTest(); 
+//		if(user != null) 
+//			return ocorrenciaService.findAll(user.getId());
+//		else
+//			throw new Exception("Usuário não logado");
 	}
 	
 	@RequestMapping(value = "/buscar/{tipo}")	

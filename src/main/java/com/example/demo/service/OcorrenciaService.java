@@ -36,6 +36,9 @@ public class OcorrenciaService implements IOcorrenciaService{
 //		return ocorrencias;
 		return null;
 	}
+	public List<Ocorrencia> buscarTudo(){
+		return this.ocorrenciaRepository.findAll();
+	}
 	
 	public Ocorrencia findByTipo(String tipo, int id) {
 //		Ocorrencia ocorrencia = ocorrenciaRepository.findByTipo(tipo, id);

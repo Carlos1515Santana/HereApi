@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.model.Usuario;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, String>{
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 
-	@Query(value =  "select * from Usuario u where u.nome = :nome and u.senha = :senha", nativeQuery = true)
-	public Usuario findByTest( @Param("nome" ) String usuario,
-							   @Param("senha") String senha );
+//	@Query(value =  "select * from Usuario u where u.nome = :nome and u.senha = :senha", nativeQuery = true)
+//	public Usuario findByTest( @Param("nome" ) String usuario,
+//							   @Param("senha") String senha );
  }
